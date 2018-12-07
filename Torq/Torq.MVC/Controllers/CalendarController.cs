@@ -46,15 +46,22 @@ namespace Torq.MVC.Controllers
             };
 
             Schedule[] schedulesArray = new Schedule[] { };
+            Employee[] employees = new Employee[] { };
 
             using (ScheduleServiceClient db = new ScheduleServiceClient())
             {
                 schedulesArray = db.GetSchedules();
             }
+            using (EmployeeServiceClient eb = new EmployeeServiceClient())
+            {
+                employees = eb.GetEmployees();
+            }
+
 
             var sortArray = schedulesArray.OrderBy(m => m.StartTime).ToArray();
             ViewBag.CalendarDataArray = MockArray;
             ViewBag.CalendarDataList = MockList;
+            ViewBag.Employees = employees;
             //@model Torq.Models.Objects.Schema[]
             //@model List<Torq.Models.Objects.Schema>
             return View(sortArray);

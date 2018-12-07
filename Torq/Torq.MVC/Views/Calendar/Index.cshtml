@@ -42,9 +42,26 @@
         let myArray = [];
         let newArray = [];
         let innerArray = [];
+        let EmployeeArray = [];
 
         let ii = 0;
+        let jj = 0;
+
+        
+
         $("ul").empty();
+        /*
+        for (jj; jj < ViewBag.Employees; jj++) {
+            EmployeeArray[jj] = {Id: e.Id, FirstName: e.FirstName, LastName: e.LastName, IsOnline: e.IsOnline};
+            jj++;
+            let selectElement = document.createElement("Select");
+            document.getElementById('EmployeeSelector').appendChild(selectElement);
+            selectElement.innerHTML = EmployeeArray[ii];
+           
+
+        }
+        console.log(ViewBag.Employees);
+        */
         @foreach (var d in Model)
         {
 
@@ -76,6 +93,7 @@
         var Bul = document.createElement('ul');
         document.getElementById('AvailableDiv').appendChild(Aul);
         document.getElementById('BookedDiv').appendChild(Bul);
+  
         
         for (ii = 0; ii < FilterdDates.length; ii++)
         {
@@ -103,6 +121,8 @@
 </script>
 
 <p id="lemo">exempel tid</p>
+
+<select id="EmployeeSelector"></select>
 
 <h4>Available</h4>
 <div id="AvailableDiv"></div>
